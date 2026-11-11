@@ -185,6 +185,8 @@ def person(role, style, x, y, s=1.0, pose="stand", flip=False, rot=0):
         sk = "#F8FBF8"; sh = fillc(shirt); pa = "#F8FBF8"
     elif style == "paper":
         st = 'stroke="none"'; sk = skin; sh = shirt; pa = pants
+    elif style == "comic":
+        st = f'stroke="{ink}" stroke-width="6" stroke-linejoin="round"'; sk = skin; sh = shirt; pa = pants
     else:
         st = 'stroke="none"'; sk = skin; sh = shirt; pa = pants
     g = []
@@ -192,6 +194,7 @@ def person(role, style, x, y, s=1.0, pose="stand", flip=False, rot=0):
     if style == "pill":
         g.append(f'<rect x="76" y="225" width="20" height="95" rx="10" fill="{pa}"/><rect x="104" y="225" width="20" height="95" rx="10" fill="{pa}"/>')
     else:
+        if style == "comic": g.append(f'<path d="M84 230 L78 318 M116 230 L122 318" stroke="{ink}" stroke-width="33" stroke-linecap="round" fill="none"/>')
         g.append(f'<path d="M84 230 L78 318 M116 230 L122 318" {st if style=="line" else f"stroke=\"{pa}\" stroke-width=\"22\" stroke-linecap=\"round\""} fill="none"/>')
         g.append(f'<path d="M66 322 h24 M110 322 h24" stroke="{ink if style=="line" else "#1d1d1d"}" stroke-width="{8 if style!="line" else 6}" stroke-linecap="round"/>')
     # body
@@ -211,6 +214,7 @@ def person(role, style, x, y, s=1.0, pose="stand", flip=False, rot=0):
             g.append(f'<path d="M{sx} {sy} L{ex:.0f} {ey:.0f} L{hx:.0f} {hy:.0f}" fill="none" {st}/>')
             g.append(f'<circle cx="{hx:.0f}" cy="{hy:.0f}" r="8" fill="#F8FBF8" {st}/>')
         else:
+            if style == "comic": g.append(f'<path d="M{sx} {sy} L{ex:.0f} {ey:.0f} L{hx:.0f} {hy:.0f}" fill="none" stroke="{ink}" stroke-width="31" stroke-linecap="round" stroke-linejoin="round"/><circle cx="{hx:.0f}" cy="{hy:.0f}" r="15" fill="{ink}"/>')
             g.append(f'<path d="M{sx} {sy} L{ex:.0f} {ey:.0f} L{hx:.0f} {hy:.0f}" fill="none" stroke="{shirt}" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>')
             g.append(f'<circle cx="{hx:.0f}" cy="{hy:.0f}" r="10" fill="{skin}"/>')
             if style == "paper":
