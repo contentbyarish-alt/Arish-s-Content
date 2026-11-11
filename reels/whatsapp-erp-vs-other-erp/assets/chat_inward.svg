@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1060" width="900" height="1060" role="img" aria-labelledby="wa-title wa-desc">
+  <title id="wa-title">Hivon WhatsApp ERP chat</title>
+  <desc id="wa-desc">Animated WhatsApp chat mockup: stock alert, owner reply, purchase order created. Sample data.</desc>
+
+  <!--
+    HIVON WHATSAPP CHAT TEMPLATE
+    ============================================================
+    HOW TO EDIT (for scripts / Claude):
+    1. Text      -> edit the <text> inside each message group (ids: msg-1 ... msg-3).
+    2. Height    -> change the bubble <rect> height; shift the next message's translate(0,Y).
+    3. Timing    -> each animated element has style attribute var "d" (start delay in seconds, e.g. d:1.2s) (start delay).
+    4. Still PNG -> add class="static" on the root <svg> (animations off, typing dots hidden).
+    5. Colours   -> change the CSS variables inside <style> below.
+    Chat area: y=226..916. Bubble text x=272 (incoming) / x=356 (outgoing). Sample data only.
+  -->
+
+  <style>
+    :root, svg {
+      --ink:#101729;          /* Hivon navy - text */
+      --muted:#6B7280;        /* footer / time text */
+      --screen:#F6F6F6;       /* header + input bar */
+      --chat-bg:#EAE6DF;      /* WhatsApp wallpaper tone */
+      --in-bubble:#FFFFFF;    /* incoming (Hivon) bubble */
+      --out-bubble:#E2FBCB;   /* outgoing (user) bubble */
+      --link:#1D8FF5;         /* icons / read ticks */
+      --notice:#FFF3C4;       /* encryption notice */
+      --bot-avatar:#0D0D0D;
+      --font: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --emoji: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    text { font-family: var(--font), var(--emoji); fill: var(--ink); font-size: 14.5px; }
+    .b { font-weight: 700; }
+    .sm { font-size: 11px; fill: var(--muted); }
+    .foot { font-size: 12.5px; fill: var(--muted); }
+    .shadow { filter: drop-shadow(0 1px 1.5px rgba(0,0,0,.18)); }
+
+    /* ---------- animation ---------- */
+    .pop-in  { transform-box: fill-box; transform-origin: 0% 100%; animation: pop .5s cubic-bezier(.2,.9,.25,1.1) var(--d,0s) both; }
+    .pop-out { transform-box: fill-box; transform-origin: 100% 100%; animation: pop .5s cubic-bezier(.2,.9,.25,1.1) var(--d,0s) both; }
+    @keyframes pop { from { opacity:0; transform: translateY(16px) scale(.94); } to { opacity:1; transform:none; } }
+
+    .typing { animation: typeshow 2.2s linear var(--d,0s) both; }
+    @keyframes typeshow { 0%{opacity:0} 8%,92%{opacity:1} 100%{opacity:0} }
+    .dot { animation: bounce 1s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .dot:nth-child(2){ animation-delay:.15s } .dot:nth-child(3){ animation-delay:.3s }
+    @keyframes bounce { 0%,60%,100%{ transform:translateY(0); opacity:.5 } 30%{ transform:translateY(-5px); opacity:1 } }
+
+    .tick { animation: tickblue .3s ease-out var(--d,0s) both; }
+    @keyframes tickblue { from{ stroke:#9AA0A6 } to{ stroke:var(--link) } }
+
+    svg.static *, svg.static { animation: none !important; }
+    svg.static .typing { display: none; }
+  </style>
+
+  <defs>
+    <clipPath id="screen-clip"><rect x="240" y="114" width="420" height="872" rx="52"/></clipPath>
+    <filter id="phone-shadow" x="-20%" y="-10%" width="140%" height="130%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#101729" flood-opacity=".18"/>
+    </filter>
+  </defs>
+
+  <!-- ============ PHONE BODY ============ -->
+  <g id="phone">
+    <rect x="224" y="150" width="4" height="46" rx="2" fill="#2A2A2A"/>
+    <rect x="224" y="214" width="4" height="70" rx="2" fill="#2A2A2A"/>
+    <rect x="672" y="236" width="4" height="96" rx="2" fill="#2A2A2A"/>
+    <rect x="226" y="100" width="448" height="900" rx="64" fill="#0D0D0D" filter="url(#phone-shadow)"/>
+
+    <g clip-path="url(#screen-clip)">
+      <rect x="240" y="114" width="420" height="872" fill="var(--screen)"/>
+
+      <!-- status bar -->
+      <g id="status-bar">
+        <text x="276" y="148" style="font-size:16px;font-weight:700">9:30</text>
+        <circle cx="450" cy="134" r="8" fill="#0D0D0D"/>
+        <g fill="#111"><rect x="560" y="148" width="4" height="4" rx="1"/><rect x="566" y="145" width="4" height="7" rx="1"/><rect x="572" y="142" width="4" height="10" rx="1"/><rect x="578" y="139" width="4" height="13" rx="1"/></g>
+        <g fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><path d="M591 145 q8 -7 16 0"/><path d="M595 149 q4 -4 8 0"/></g>
+        <circle cx="599" cy="152" r="1.4" fill="#111"/>
+        <rect x="618" y="140" width="24" height="12" rx="3.5" fill="none" stroke="#111" stroke-width="1.5"/>
+        <rect x="620.5" y="142.5" width="19" height="7" rx="2" fill="#111"/>
+      </g>
+
+      <!-- chat header -->
+      <g id="chat-header">
+        <rect x="240" y="166" width="420" height="60" fill="var(--screen)"/>
+        <path d="M274 196 H255 M263 187 L254 196 L263 205" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="304" cy="196" r="20" fill="var(--bot-avatar)"/>
+        <text x="304" y="202" text-anchor="middle" style="fill:#fff;font-weight:800;font-size:16px">HI</text>
+        <text id="contact-name" x="336" y="202" style="font-size:17px;font-weight:600">Hivon Automations</text>
+        <g fill="none" stroke="var(--link)" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+          <rect x="560" y="186" width="22" height="20" rx="4"/><path d="M582 192 l11 -6 v20 l-11 -6"/>
+          <path d="M622 186 c-2 0 -4 2 -3 6 c3 9 9 15 18 18 c4 1 6 -1 6 -3 l0 -5 l-7 -3 l-3 3.500 c-4 -2 -7 -5 -9 -9 l3.500 -3 l-3 -7 z"/>
+        </g>
+      </g>
+
+      <!-- chat wallpaper -->
+      <rect x="240" y="226" width="420" height="690" fill="var(--chat-bg)"/>
+      <g id="date-chip">
+        <rect x="410" y="248" width="80" height="26" rx="8" fill="#fff" class="shadow"/>
+        <text x="450" y="266" text-anchor="middle" style="font-size:13px">Today</text>
+      </g>
+      <g id="e2e-notice">
+        <rect x="278" y="288" width="344" height="38" rx="8" fill="var(--notice)"/>
+        <rect x="292" y="303" width="7" height="6" rx="1" fill="#111"/><path d="M293.500 303 v-2 a2 2 0 0 1 4 0 v2" fill="none" stroke="#111" stroke-width="1.2"/>
+        <text x="306" y="305" style="font-size:10.5px">Messages and calls are end to end encrypted.</text>
+        <text x="306" y="318" style="font-size:10.5px">Only people in this chat can read.</text>
+      </g>
+
+      <!-- ============ MESSAGE 1 : incoming alert ============ -->
+      <g id="msg-1" transform="translate(0,350)">
+        <g class="pop-in" style="--d:.6s">
+          <rect x="256" y="0" width="340" height="176" rx="14" fill="var(--in-bubble)" class="shadow"/>
+          <text x="272" y="26" class="b">🚚 Material Inward</text>
+          <line x1="272" y1="34" x2="500" y2="34" stroke="#222" stroke-width="1.2"/>
+          <text x="272" y="56">📦 Item: <tspan class="b">Steel Rod 12mm</tspan></text>
+          <text x="272" y="78">🏢 Vendor: <tspan class="b">Vendor A</tspan></text>
+          <text x="272" y="110" class="b">Kitna maal andar aaya hai?</text>
+          <text x="272" y="130" class="b"></text>
+          <line x1="272" y1="142" x2="500" y2="142" stroke="#222" stroke-width="1.2"/>
+          <text x="272" y="163" class="foot">Hivon Automations | WhatsApp ERP</text>
+          <text x="580" y="166" text-anchor="end" class="sm">14:37</text>
+        </g>
+      </g>
+
+      <!-- ============ MESSAGE 2 : outgoing reply ============ -->
+      <g id="msg-2" transform="translate(0,544)">
+        <g class="pop-out" style="--d:2.8s">
+          <rect x="340" y="0" width="304" height="76" rx="14" fill="var(--out-bubble)" class="shadow"/>
+          <text x="356" y="28">500 kg aaya hai,</text>
+          <text x="356" y="50">gate entry kar do.</text>
+          <text x="578" y="66" text-anchor="end" class="sm">14:41 PM</text>
+          <g fill="none" stroke="#9AA0A6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="tick" style="--d:3.4s">
+            <path d="M584 62 l4 4 l8 -9"/><path d="M591 62 l4 4 l8 -9"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- ============ TYPING INDICATOR ============ -->
+      <g id="typing" class="typing" style="--d:4.2s">
+        <rect x="256" y="636" width="72" height="38" rx="16" fill="var(--in-bubble)" class="shadow"/>
+        <g fill="#9AA0A6"><circle class="dot" cx="278" cy="655" r="3.500"/><circle class="dot" cx="292" cy="655" r="3.500"/><circle class="dot" cx="306" cy="655" r="3.500"/></g>
+      </g>
+
+      <!-- ============ MESSAGE 3 : incoming PO document ============ -->
+      <g id="msg-3" transform="translate(0,636)">
+        <g class="pop-in" style="--d:6.6s">
+          <rect x="256" y="0" width="340" height="258" rx="14" fill="var(--in-bubble)" class="shadow"/>
+          <!-- document preview -->
+          <path d="M256 14 Q256 0 270 0 H582 Q596 0 596 14 V54 H256 Z" fill="#F1F2F4"/>
+          <g fill="#D5D8DE"><rect x="276" y="14" width="90" height="8" rx="3"/><rect x="276" y="28" width="150" height="6" rx="3"/><rect x="276" y="40" width="120" height="6" rx="3"/><rect x="480" y="14" width="96" height="30" rx="4"/></g>
+          <!-- file row -->
+          <rect x="256" y="54" width="340" height="48" fill="#F5F5F5"/>
+          <rect x="272" y="63" width="22" height="28" rx="4" fill="#D6203E"/>
+          <text x="283" y="81" text-anchor="middle" style="fill:#fff;font-size:8px;font-weight:700">PDF</text>
+          <text id="file-name" x="304" y="76" style="font-size:14px">GRN-101.pdf</text>
+          <text x="304" y="91" class="sm" style="font-size:10px">1 page • 2 KB • pdf</text>
+          <circle cx="570" cy="78" r="12" fill="none" stroke="#111" stroke-width="1.5"/>
+          <path d="M570 72 v9 M566 78 l4 4 l4 -4" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- text -->
+          <text x="272" y="126" class="b">✅ Inward Entry Created!</text>
+          <line x1="272" y1="134" x2="560" y2="134" stroke="#222" stroke-width="1.2"/>
+          <text x="272" y="156">📦 Item: <tspan class="b">Steel Rod 12mm</tspan></text>
+          <text x="272" y="176">🔢 Quantity: <tspan class="b">500 kg</tspan></text>
+          <text x="272" y="196">🏢 Vendor: <tspan class="b">Vendor A</tspan></text>
+          <text x="272" y="216">🔗 Attachment: <tspan class="b">GRN_101.pdf</tspan></text>
+          <line x1="272" y1="226" x2="580" y2="226" stroke="#222" stroke-width="1.2"/>
+          <text x="272" y="246" class="foot">Hivon Automations | WhatsApp ERP</text>
+          <text x="580" y="248" text-anchor="end" class="sm">14:37</text>
+        </g>
+      </g>
+
+      <!-- input bar -->
+      <g id="input-bar">
+        <rect x="240" y="916" width="420" height="70" fill="var(--screen)"/>
+        <path d="M264 944 h18 M273 935 v18" stroke="var(--link)" stroke-width="2.2" stroke-linecap="round"/>
+        <rect x="292" y="927" width="272" height="34" rx="17" fill="#fff" stroke="#D9D9D9"/>
+        <rect x="532" y="934" width="18" height="18" rx="5" fill="none" stroke="var(--link)" stroke-width="2"/>
+        <g fill="none" stroke="var(--link)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+          <rect x="580" y="934" width="24" height="18" rx="4"/><circle cx="592" cy="943" r="4.500"/>
+          <rect x="624" y="930" width="9" height="16" rx="4.500"/><path d="M620 941 a8.500 8.500 0 0 0 17 0 M628.500 950 v6"/>
+        </g>
+        <rect x="370" y="971" width="160" height="5" rx="2.500" fill="#0D0D0D"/>
+      </g>
+    </g>
+  </g>
+</svg>

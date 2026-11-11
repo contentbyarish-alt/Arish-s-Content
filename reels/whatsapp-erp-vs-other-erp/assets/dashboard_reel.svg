@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="db-title db-desc">
+  <title id="db-title">Hivon ERP dashboard</title>
+  <desc id="db-desc">Animated ERP management dashboard mockup with KPI cards, weekly presence chart and live alerts. Sample data only.</desc>
+
+  <!--
+    HIVON ERP DASHBOARD TEMPLATE  (1600 x 900)  - SAMPLE DATA ONLY
+    ============================================================
+    HOW TO EDIT (for scripts / Claude):
+    1. KPI cards   -> groups id="kpi-*": edit title / number / caption text. Number colour = semantic (see palette).
+    2. Bar chart   -> each bar is <rect class="grow" ...>. Value v (0-100): height = v*1.9, y = 830 - height.
+                      Move the value label (id="bar-label-N") to y = barY + 28, and update polyline id="trend-line".
+    3. Alerts      -> groups id="alert-*": edit text; badge colour: URGENT #DD524C, PENDING #E9A23B, DONE #55B685, NEW #101729.
+    4. Portal name -> id="brand-name", user -> id="user-name".
+    5. Timing      -> style attribute var "d" (start delay in seconds, e.g. d:1.2s) on animated groups (rise / grow / slide / draw).
+    6. Still PNG   -> add class="static" on the root <svg>.
+    Palette: hivon-colour-template skill (navy #101729, off-white #F9FAFC, greens #55B685 / #43946C, amber, coral, purple).
+  -->
+
+  <style>
+    svg {
+      --ink:#101729; --muted:#5B6475; --line:#E6E9F0; --canvas:#F9FAFC; --card:#FFFFFF; --mint:#EFFDF6;
+      --green:#55B685; --deep:#43946C; --amber:#E9A23B; --coral:#DD524C; --purple:#845EEE;
+      --font: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    text { font-family: var(--font); fill: var(--ink); }
+    .h1 { font-size: 38px; font-weight: 800; }
+    .sub { font-size: 17px; fill: var(--muted); }
+    .card-title { font-size: 17px; font-weight: 600; fill: #3B4457; }
+    .num { font-size: 54px; font-weight: 800; }
+    .cap { font-size: 15px; fill: var(--muted); }
+    .nav { font-size: 16px; font-weight: 500; }
+    .sec { font-size: 12.5px; font-weight: 600; letter-spacing: .08em; fill: #6B7280; }
+    .axis { font-size: 12.5px; fill: var(--muted); }
+    .badge { font-size: 11px; font-weight: 800; letter-spacing: .04em; }
+    .card { fill: var(--card); stroke: var(--line); }
+    .soft { filter: drop-shadow(0 2px 6px rgba(16,23,41,.06)); }
+
+    /* ---------- animation ---------- */
+    .rise  { animation: rise .6s cubic-bezier(.2,.8,.2,1) var(--d,0s) both; }
+    @keyframes rise { from{opacity:0; transform:translateY(18px)} to{opacity:1; transform:none} }
+    .slide { animation: slide .55s cubic-bezier(.2,.8,.2,1) var(--d,0s) both; }
+    @keyframes slide { from{opacity:0; transform:translateX(28px)} to{opacity:1; transform:none} }
+    .grow  { transform-box: fill-box; transform-origin: 50% 100%; animation: grow .7s cubic-bezier(.2,.8,.2,1) var(--d,0s) both; }
+    @keyframes grow { from{transform:scaleY(0)} to{transform:scaleY(1)} }
+    .fade  { animation: fade .5s ease-out var(--d,0s) both; }
+    @keyframes fade { from{opacity:0} to{opacity:1} }
+    .draw  { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1s ease-in-out var(--d,0s) forwards; }
+    @keyframes draw { to{ stroke-dashoffset: 0 } }
+
+    svg.static *, svg.static { animation: none !important; }
+    svg.static .draw { stroke-dashoffset: 0; }
+  </style>
+
+  <rect width="1600" height="900" fill="var(--canvas)"/>
+
+
+  <!-- ============ SIDEBAR ============ -->
+  <g id="sidebar">
+    <rect x="0" y="0" width="280" height="900" fill="#FFFFFF"/>
+    <line x1="280" y1="0" x2="280" y2="900" stroke="var(--line)"/>
+    <circle cx="46" cy="42" r="18" fill="#0D0D0D"/>
+    <text x="46" y="48" text-anchor="middle" style="fill:#fff;font-size:15px;font-weight:800">HI</text>
+    <text id="brand-name" x="74" y="49" style="font-size:22px;font-weight:700">Hivon ERP</text>
+    <line x1="0" y1="82" x2="280" y2="82" stroke="var(--line)"/>
+    <circle cx="48" cy="120" r="20" fill="#EEF0F4"/>
+    <text x="48" y="126" text-anchor="middle" style="font-size:14px;font-weight:600;fill:#6B7280">AU</text>
+    <text id="user-name" x="82" y="116" style="font-size:18px;font-weight:600">Admin User</text>
+    <text x="82" y="138" style="font-size:13.5px;fill:#6B7280;letter-spacing:.04em">ADMIN</text>
+    <line x1="0" y1="164" x2="280" y2="164" stroke="var(--line)"/>
+
+    <text class="sec" x="28" y="190">MAIN</text>
+    <rect x="12" y="202" width="256" height="44" rx="10" fill="var(--mint)"/>
+    <rect x="12" y="212" width="4" height="24" rx="2" fill="var(--green)"/>
+    <g fill="none" stroke="#101729" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="214" width="8" height="8" rx="1.5"/><rect x="41" y="214" width="8" height="8" rx="1.5"/><rect x="30" y="225" width="8" height="8" rx="1.5"/><rect x="41" y="225" width="8" height="8" rx="1.5"/></g>
+    <text class="nav" x="64" y="230" style="font-weight:700">Dashboard</text>
+    <text class="sec" x="28" y="276">PEOPLE</text>
+    <g fill="none" stroke="#101729" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="38" cy="306" r="4.5"/><path d="M30 319 q8 -12 16 0"/></g>
+    <text class="nav" x="64" y="316">Employee Management</text>
+    <path d="M258 305 l5 5 l-5 5" fill="none" stroke="#101729" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text class="sec" x="28" y="362">SALES &amp; LEADS</text>
+    <g fill="none" stroke="#101729" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="39" cy="395" r="9"/><circle cx="39" cy="395" r="4.5"/></g>
+    <text class="nav" x="64" y="402">Leads Management</text>
+    <path d="M258 391 l5 5 l-5 5" fill="none" stroke="#101729" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text class="sec" x="28" y="448">INVENTORY</text>
+    <g fill="none" stroke="#101729" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M31 473 v17 h17"/><path d="M36 486 v-5 M41 486 v-9 M46 486 v-3"/></g>
+    <text class="nav" x="64" y="488">Stock Dashboard</text>
+    <g fill="none" stroke="#101729" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M30 518 h3 l2 10 h11 l2 -7 h-14"/><circle cx="37" cy="533" r="1.5"/><circle cx="45" cy="533" r="1.5"/></g>
+    <text class="nav" x="64" y="532">Procurement</text>
+    <path d="M258 521 l5 5 l-5 5" fill="none" stroke="#101729" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text class="sec" x="28" y="578">PRODUCTION</text>
+    <g fill="none" stroke="#101729" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M30 620 v-9 l6 4 v-4 l6 4 v-4 l6 4 v9 z"/><path d="M33 610 v-6 h3 v6"/></g>
+    <text class="nav" x="64" y="618">Job Order &amp; Production</text>
+    <path d="M258 607 l5 5 l-5 5" fill="none" stroke="#101729" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text class="sec" x="28" y="664">FINANCE</text>
+    <g fill="none" stroke="#101729" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="691" width="19" height="14" rx="3"/><path d="M30 696 h19"/><circle cx="44" cy="700" r="1" fill="#101729"/></g>
+    <text class="nav" x="64" y="704">Finance</text>
+    <path d="M258 693 l5 5 l-5 5" fill="none" stroke="#101729" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="28" y="880" style="font-size:13px;fill:#6B7280">© 2026 Hivon · sample data</text>
+  </g>
+
+
+  <!-- ============ TOP BAR ============ -->
+  <g id="topbar">
+    <rect x="281" y="0" width="1319" height="72" fill="#FFFFFF"/>
+    <line x1="281" y1="72" x2="1600" y2="72" stroke="var(--line)"/>
+    <rect x="312" y="14" width="520" height="44" rx="12" fill="#FFFFFF" stroke="var(--line)"/>
+    <g fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round"><circle cx="338" cy="35" r="7"/><path d="M343.500 40.500 L349 46"/></g>
+    <text x="364" y="42" style="font-size:17px;fill:#6B7280">Search pages, leads, jobs...</text>
+    <rect x="770" y="24" width="46" height="24" rx="6" fill="#F1F2F5"/>
+    <text x="793" y="41" text-anchor="middle" style="font-size:12.5px;fill:#6B7280">⌘K</text>
+    <rect x="1466" y="14" width="44" height="44" rx="12" fill="#FFFFFF" stroke="var(--line)"/>
+    <g fill="none" stroke="#101729" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1488 28 a7 7 0 0 1 7 7 v5 l2 3 h-18 l2 -3 v-5 a7 7 0 0 1 7 -7 z"/><path d="M1485 47 a3 3 0 0 0 6 0"/></g>
+    <circle cx="1560" cy="36" r="22" fill="#EEF0F4"/>
+    <text x="1560" y="42" text-anchor="middle" style="font-size:15px;font-weight:600;fill:#6B7280">AU</text>
+  </g>
+
+  <g id="page-heading" class="fade" style="--d:.1s">
+    <text class="h1" x="320" y="142">Management Overview</text>
+    <text class="sub" x="320" y="174">Real-time stats across employees, inventory and production.</text>
+  </g>
+
+  <!-- ============ KPI CARDS ============ -->
+  <g id="kpi-headcount" class="rise" style="--d:0.3s">
+    <rect class="card soft" x="320" y="204" width="396" height="148" rx="16"/>
+    <text class="card-title" x="344" y="242">Total Headcount</text>
+    <circle cx="672" cy="242" r="21" fill="#E6E9F0"/>
+    <g fill="none" stroke="#101729" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="669" cy="238" r="4"/><path d="M661 251 q8 -12 16 0"/><path d="M677 235 a4 4 0 0 1 0 8 M680 245 q5 1 6 6"/></g>
+    <text class="num" x="344" y="304" style="fill:#101729">120</text>
+    <text class="cap" x="344" y="332">Active workforce</text>
+  </g>
+  <g id="kpi-available" class="rise" style="--d:0.44s">
+    <rect class="card soft" x="742" y="204" width="396" height="148" rx="16"/>
+    <text class="card-title" x="766" y="242">Available Strength</text>
+    <circle cx="1094" cy="242" r="21" fill="#EFFDF6"/>
+    <g fill="none" stroke="#55B685" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="1091" cy="238" r="4"/><path d="M1083 251 q8 -12 16 0"/><path d="M1097 245 l3 3 l6 -7"/></g>
+    <text class="num" x="766" y="304" style="fill:#55B685">86</text>
+    <text class="cap" x="766" y="332">Currently checked in</text>
+  </g>
+  <g id="kpi-present" class="rise" style="--d:0.58s">
+    <rect class="card soft" x="1164" y="204" width="396" height="148" rx="16"/>
+    <text class="card-title" x="1188" y="242">Today Total Present</text>
+    <circle cx="1516" cy="242" r="21" fill="#EFFDF6"/>
+    <g fill="none" stroke="#43946C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1506" y="233" width="20" height="19" rx="3"/><path d="M1506 239 h20 M1511 230 v5 M1521 230 v5"/><path d="M1516 244 v4 l3 2"/></g>
+    <text class="num" x="1188" y="304" style="fill:#43946C">94</text>
+    <text class="cap" x="1188" y="332">Checked in today</text>
+  </g>
+  <g id="kpi-absent" class="rise" style="--d:0.72s">
+    <rect class="card soft" x="320" y="372" width="396" height="148" rx="16"/>
+    <text class="card-title" x="344" y="410">Today Production</text>
+    <circle cx="672" cy="410" r="21" fill="#FDF1DD"/>
+    <g fill="none" stroke="#E9A23B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="672" cy="410" r="9"/><path d="M664 402 L680 418"/></g>
+    <text class="num" x="344" y="472" style="fill:#43946C">1,240</text>
+    <text class="cap" x="344" y="500">pcs · all machines</text>
+  </g>
+  <g id="kpi-leave" class="rise" style="--d:0.86s">
+    <rect class="card soft" x="742" y="372" width="396" height="148" rx="16"/>
+    <text class="card-title" x="766" y="410">Inventory</text>
+    <circle cx="1094" cy="410" r="21" fill="#EEE9FD"/>
+    <g fill="none" stroke="#845EEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1094 399 l9 3 v7 c0 6 -4 9 -9 12 c-5 -3 -9 -6 -9 -12 v-7 z"/><path d="M1094 407 v6 M1094 417 v.5"/></g>
+    <text class="num" x="766" y="472" style="fill:#101729">312</text>
+    <text class="cap" x="766" y="500">SKUs in stock</text>
+  </g>
+  <g id="kpi-defaulters" class="rise" style="--d:1.0s">
+    <rect class="card soft" x="1164" y="372" width="396" height="148" rx="16"/>
+    <text class="card-title" x="1188" y="410">Pending Inward</text>
+    <circle cx="1516" cy="410" r="21" fill="#FAE3E3"/>
+    <g fill="none" stroke="#DD524C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="1516" cy="410" r="10"/><circle cx="1516" cy="410" r="5"/><circle cx="1516" cy="410" r="1" fill="#DD524C"/></g>
+    <text class="num" x="1188" y="472" style="fill:#E9A23B">3</text>
+    <text class="cap" x="1188" y="500">Gate entries today</text>
+  </g>
+
+  <!-- ============ WEEKLY PRESENCE CHART ============ -->
+  <g id="chart-card" class="rise" style="--d:1.1s">
+    <rect class="card soft" x="320" y="540" width="760" height="340" rx="16"/>
+    <text x="344" y="582" style="font-size:22px;font-weight:700">Weekly Production Trend</text>
+    <text class="sub" x="344" y="608" style="font-size:15px">Last 7 days, % of daily target</text>
+  </g>
+  <g id="chart-grid" class="fade" style="--d:1.3s">
+    <line x1="380" y1="830.0" x2="1050" y2="830.0" stroke="#E6E9F0" stroke-dasharray="0"/>
+    <text class="axis" x="368" y="834.0" text-anchor="end">0%</text>
+    <line x1="380" y1="782.5" x2="1050" y2="782.5" stroke="#E6E9F0" stroke-dasharray="4 5"/>
+    <text class="axis" x="368" y="786.5" text-anchor="end">25%</text>
+    <line x1="380" y1="735.0" x2="1050" y2="735.0" stroke="#E6E9F0" stroke-dasharray="4 5"/>
+    <text class="axis" x="368" y="739.0" text-anchor="end">50%</text>
+    <line x1="380" y1="687.5" x2="1050" y2="687.5" stroke="#E6E9F0" stroke-dasharray="4 5"/>
+    <text class="axis" x="368" y="691.5" text-anchor="end">75%</text>
+    <line x1="380" y1="640.0" x2="1050" y2="640.0" stroke="#E6E9F0" stroke-dasharray="4 5"/>
+    <text class="axis" x="368" y="644.0" text-anchor="end">100%</text>
+  </g>
+  <g id="bars">
+    <rect class="grow" style="--d:1.5s" id="bar-1" x="406" y="681.8" width="44" height="148.2" rx="6" fill="var(--green)"/>
+    <rect class="grow" style="--d:1.6s" id="bar-2" x="502" y="674.2" width="44" height="155.8" rx="6" fill="var(--green)"/>
+    <rect class="grow" style="--d:1.7s" id="bar-3" x="597" y="687.5" width="44" height="142.5" rx="6" fill="var(--green)"/>
+    <rect class="grow" style="--d:1.8s" id="bar-4" x="693" y="662.8" width="44" height="167.2" rx="6" fill="var(--green)"/>
+    <rect class="grow" style="--d:1.9s" id="bar-5" x="789" y="657.1" width="44" height="172.9" rx="6" fill="var(--green)"/>
+    <rect class="grow" style="--d:2.0s" id="bar-6" x="884" y="708.4" width="44" height="121.6" rx="6" fill="var(--green)"/>
+    <rect class="grow" style="--d:2.1s" id="bar-7" x="980" y="697.0" width="44" height="133.0" rx="6" fill="var(--deep)"/>
+  </g>
+  <g id="bar-labels" class="fade" style="--d:2.4s">
+    <text id="bar-label-1" x="428" y="709.8" text-anchor="middle" style="font-size:14px;font-weight:700;fill:#101729">78%</text>
+    <text class="axis" x="428" y="852" text-anchor="middle" style="font-size:13.5px">Tue</text>
+    <text id="bar-label-2" x="524" y="702.2" text-anchor="middle" style="font-size:14px;font-weight:700;fill:#101729">82%</text>
+    <text class="axis" x="524" y="852" text-anchor="middle" style="font-size:13.5px">Wed</text>
+    <text id="bar-label-3" x="619" y="715.5" text-anchor="middle" style="font-size:14px;font-weight:700;fill:#101729">75%</text>
+    <text class="axis" x="619" y="852" text-anchor="middle" style="font-size:13.5px">Thu</text>
+    <text id="bar-label-4" x="715" y="690.8" text-anchor="middle" style="font-size:14px;font-weight:700;fill:#101729">88%</text>
+    <text class="axis" x="715" y="852" text-anchor="middle" style="font-size:13.5px">Fri</text>
+    <text id="bar-label-5" x="811" y="685.1" text-anchor="middle" style="font-size:14px;font-weight:700;fill:#101729">91%</text>
+    <text class="axis" x="811" y="852" text-anchor="middle" style="font-size:13.5px">Sat</text>
+    <text id="bar-label-6" x="906" y="736.4" text-anchor="middle" style="font-size:14px;font-weight:700;fill:#101729">64%</text>
+    <text class="axis" x="906" y="852" text-anchor="middle" style="font-size:13.5px">Sun</text>
+    <text id="bar-label-7" x="1002" y="725.0" text-anchor="middle" style="font-size:14px;font-weight:700;fill:#FFFFFF">70%</text>
+    <text class="axis" x="1002" y="852" text-anchor="middle" style="font-size:13.5px">Mon</text>
+  </g>
+  <polyline id="trend-line" class="draw" style="--d:2.2s" pathLength="1" points="428,681.8 524,674.2 619,687.5 715,662.8 811,657.1 906,708.4 1002,697.0" fill="none" stroke="#101729" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="trend-dots" class="fade" style="--d:3s">
+    <circle cx="428" cy="681.8" r="5" fill="#fff" stroke="#101729" stroke-width="2.5"/>
+    <circle cx="524" cy="674.2" r="5" fill="#fff" stroke="#101729" stroke-width="2.5"/>
+    <circle cx="619" cy="687.5" r="5" fill="#fff" stroke="#101729" stroke-width="2.5"/>
+    <circle cx="715" cy="662.8" r="5" fill="#fff" stroke="#101729" stroke-width="2.5"/>
+    <circle cx="811" cy="657.1" r="5" fill="#fff" stroke="#101729" stroke-width="2.5"/>
+    <circle cx="906" cy="708.4" r="5" fill="#fff" stroke="#101729" stroke-width="2.5"/>
+    <circle cx="1002" cy="697.0" r="5" fill="#fff" stroke="#101729" stroke-width="2.5"/>
+  </g>
+
+  <!-- ============ LIVE ALERTS ============ -->
+  <g id="alerts-card" class="rise" style="--d:1.2s">
+    <rect class="card soft" x="1104" y="540" width="456" height="340" rx="16"/>
+    <text x="1128" y="582" style="font-size:22px;font-weight:700">Live Alerts</text>
+    <text class="sub" x="1128" y="608" style="font-size:15px">Latest from WhatsApp ERP</text>
+  </g>
+  <g id="alert-1" class="slide" style="--d:1.9s">
+    <text x="1128" y="658" style="font-size:16px;font-weight:600">Low stock: Flange blanks</text>
+    <text class="cap" x="1128" y="678" style="font-size:13.5px">40 left • 09:58</text>
+    <rect x="1465" y="645" width="71" height="26" rx="13" fill="#DD524C"/>
+    <text class="badge" x="1500" y="662" text-anchor="middle" style="fill:#FFFFFF">URGENT</text>
+    <line x1="1128" y1="690" x2="1536" y2="690" stroke="#E6E9F0"/>
+  </g>
+  <g id="alert-2" class="slide" style="--d:2.15s">
+    <text x="1128" y="716" style="font-size:16px;font-weight:600">Inward: Steel Rod 500 kg</text>
+    <text class="cap" x="1128" y="736" style="font-size:13.5px">GRN-101 • Vendor A • 10:15</text>
+    <rect x="1457" y="703" width="79" height="26" rx="13" fill="#E9A23B"/>
+    <text class="badge" x="1496" y="720" text-anchor="middle" style="fill:#101729">PENDING</text>
+    <line x1="1128" y1="748" x2="1536" y2="748" stroke="#E6E9F0"/>
+  </g>
+  <g id="alert-3" class="slide" style="--d:2.4s">
+    <text x="1128" y="774" style="font-size:16px;font-weight:600">Attendance: 94 present</text>
+    <text class="cap" x="1128" y="794" style="font-size:13.5px">Shift A • 09:30</text>
+    <rect x="1481" y="761" width="55" height="26" rx="13" fill="#55B685"/>
+    <text class="badge" x="1509" y="778" text-anchor="middle" style="fill:#101729">DONE</text>
+    <line x1="1128" y1="806" x2="1536" y2="806" stroke="#E6E9F0"/>
+  </g>
+  <g id="alert-4" class="slide" style="--d:2.65s">
+    <text x="1128" y="832" style="font-size:16px;font-weight:600">Machine M-4: 120 pcs logged</text>
+    <text class="cap" x="1128" y="852" style="font-size:13.5px">Shift A • Flange 40mm • 10:42</text>
+    <rect x="1489" y="819" width="47" height="26" rx="13" fill="#101729"/>
+    <text class="badge" x="1513" y="836" text-anchor="middle" style="fill:#FFFFFF">NEW</text>
+  </g>
+</svg>
