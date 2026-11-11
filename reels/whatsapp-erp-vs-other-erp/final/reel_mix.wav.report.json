@@ -1,0 +1,145 @@
+{
+  "vo_duration_s": 59.753,
+  "mix_duration_s": 59.753,
+  "vo_peak_dbfs_pre_gain": -1.7,
+  "vo_speaking_rms_dbfs_pre_gain": -16.6,
+  "integrated_lufs": -14.0,
+  "true_peak_dbtp": -1.5,
+  "applied_gain_db": 0.2,
+  "bgm_min_margin_in_speech_db": 157.6,
+  "sfx_min_margin_in_speech_db": 24.7,
+  "sfx_peak_under_vo_peak_db": 25.1,
+  "mix_minus_vo_max_in_speech_db": 0.04,
+  "cues": [
+    {
+      "t": 0.3,
+      "class": "whoosh",
+      "file": "whoosh.wav",
+      "start": 0.043,
+      "peak_dbfs": -17.7,
+      "under_vo_peak_db": 16.0
+    },
+    {
+      "t": 0.86,
+      "class": "hit",
+      "file": "hit.wav",
+      "start": 0.851,
+      "peak_dbfs": -13.7,
+      "under_vo_peak_db": 12.0
+    },
+    {
+      "t": 4.92,
+      "class": "pop",
+      "file": "pop.wav",
+      "start": 4.92,
+      "peak_dbfs": -15.7,
+      "under_vo_peak_db": 14.0
+    },
+    {
+      "t": 6.58,
+      "class": "click",
+      "file": "click.wav",
+      "start": 6.58,
+      "peak_dbfs": -16.7,
+      "under_vo_peak_db": 15.0
+    },
+    {
+      "t": 12.16,
+      "class": "tick",
+      "file": "click.wav",
+      "start": 12.16,
+      "peak_dbfs": -19.7,
+      "under_vo_peak_db": 18.0
+    },
+    {
+      "t": 14.63,
+      "class": "whoosh",
+      "file": "whoosh.wav",
+      "start": 14.373,
+      "peak_dbfs": -20.7,
+      "under_vo_peak_db": 19.0
+    },
+    {
+      "t": 17.9,
+      "class": "pop",
+      "file": "pop.wav",
+      "start": 17.9,
+      "peak_dbfs": -15.7,
+      "under_vo_peak_db": 14.0
+    },
+    {
+      "t": 24.48,
+      "class": "click",
+      "file": "click.wav",
+      "start": 24.48,
+      "peak_dbfs": -16.7,
+      "under_vo_peak_db": 15.0
+    },
+    {
+      "t": 32.42,
+      "class": "hit",
+      "file": "hit.wav",
+      "start": 32.411,
+      "peak_dbfs": -15.7,
+      "under_vo_peak_db": 14.0
+    },
+    {
+      "t": 35.6,
+      "class": "click",
+      "file": "click.wav",
+      "start": 35.6,
+      "peak_dbfs": -16.7,
+      "under_vo_peak_db": 15.0
+    },
+    {
+      "t": 39.3,
+      "class": "pop",
+      "file": "pop.wav",
+      "start": 39.3,
+      "peak_dbfs": -15.7,
+      "under_vo_peak_db": 14.0
+    },
+    {
+      "t": 43.4,
+      "class": "click",
+      "file": "click.wav",
+      "start": 43.4,
+      "peak_dbfs": -16.7,
+      "under_vo_peak_db": 15.0
+    },
+    {
+      "t": 49.06,
+      "class": "chime",
+      "file": "chime.wav",
+      "start": 49.06,
+      "peak_dbfs": -18.0,
+      "under_vo_peak_db": 16.3
+    },
+    {
+      "t": 53.58,
+      "class": "hit",
+      "file": "hit.wav",
+      "start": 53.571,
+      "peak_dbfs": -15.7,
+      "under_vo_peak_db": 14.0
+    },
+    {
+      "t": 57.7,
+      "class": "chime",
+      "file": "chime.wav",
+      "start": 57.7,
+      "peak_dbfs": -18.0,
+      "under_vo_peak_db": 16.3
+    }
+  ],
+  "checks": {
+    "duration_matches_vo": true,
+    "loudness_near_target": true,
+    "true_peak_ok": true,
+    "bgm_18db_under_voice_in_speech": true,
+    "sfx_10db_under_voice_peak": true,
+    "sfx_under_voice_in_speech": true,
+    "mix_within_1p5_dB_of_voice_in_speech": true
+  },
+  "note": "Numbers are a safety net. Final judgement is a listen on a phone speaker and on earphones; if any cue still jumps out, rerun with SFX_TRIM_DB=-3 or a per-cue -3 nudge, or drop it."
+}
