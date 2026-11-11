@@ -147,24 +147,24 @@
   <g id="kpi-absent" class="rise" style="--d:0.72s">
     <rect class="card soft" x="320" y="372" width="396" height="148" rx="16"/>
     <text class="card-title" x="344" y="410">Today Production</text>
-    <circle cx="672" cy="410" r="21" fill="#FDF1DD"/>
-    <g fill="none" stroke="#E9A23B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="672" cy="410" r="9"/><path d="M664 402 L680 418"/></g>
+    <circle cx="672" cy="410" r="21" fill="#EFFDF6"/>
+    <g fill="none" stroke="#43946C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M662 418 v-8 l6 -4 v4 l6 -4 v4 l6 -4 v12 z"/><path d="M662 418 h20"/></g>
     <text class="num" x="344" y="472" style="fill:#43946C">1,240</text>
     <text class="cap" x="344" y="500">pcs · all machines</text>
   </g>
   <g id="kpi-leave" class="rise" style="--d:0.86s">
     <rect class="card soft" x="742" y="372" width="396" height="148" rx="16"/>
     <text class="card-title" x="766" y="410">Inventory</text>
-    <circle cx="1094" cy="410" r="21" fill="#EEE9FD"/>
-    <g fill="none" stroke="#845EEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1094 399 l9 3 v7 c0 6 -4 9 -9 12 c-5 -3 -9 -6 -9 -12 v-7 z"/><path d="M1094 407 v6 M1094 417 v.5"/></g>
+    <circle cx="1094" cy="410" r="21" fill="#F1F2F5"/>
+    <g fill="none" stroke="#101729" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1094 400 l9 5 v10 l-9 5 l-9 -5 v-10 z"/><path d="M1085 405 l9 5 l9 -5 M1094 410 v10"/></g>
     <text class="num" x="766" y="472" style="fill:#101729">312</text>
     <text class="cap" x="766" y="500">SKUs in stock</text>
   </g>
   <g id="kpi-defaulters" class="rise" style="--d:1.0s">
     <rect class="card soft" x="1164" y="372" width="396" height="148" rx="16"/>
     <text class="card-title" x="1188" y="410">Pending Inward</text>
-    <circle cx="1516" cy="410" r="21" fill="#FAE3E3"/>
-    <g fill="none" stroke="#DD524C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="1516" cy="410" r="10"/><circle cx="1516" cy="410" r="5"/><circle cx="1516" cy="410" r="1" fill="#DD524C"/></g>
+    <circle cx="1516" cy="410" r="21" fill="#FDF1DD"/>
+    <g fill="none" stroke="#E9A23B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1504 404 h14 v10 h-14 z M1518 407 h5 l3 4 v3 h-8"/><circle cx="1508" cy="416" r="2"/><circle cx="1521" cy="416" r="2"/></g>
     <text class="num" x="1188" y="472" style="fill:#E9A23B">3</text>
     <text class="cap" x="1188" y="500">Gate entries today</text>
   </g>
