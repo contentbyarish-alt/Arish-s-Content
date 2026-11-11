@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fcpxml>
+<fcpxml version="1.9">
+ <resources>
+  <format id="r1" name="FFVideoFormat1080x1920p25" frameDuration="1/25s" width="1080" height="1920" colorSpace="1-1-1 (Rec. 709)"/>
+  <asset id="a1" name="01 VS opening" start="0s" duration="56/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s01.mp4"/></asset>
+  <asset id="a2" name="02 Face 1 - teen reason" start="0s" duration="93/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s02.mp4"/></asset>
+  <asset id="a3" name="03 Reason 1 - koi system nahi" start="0s" duration="105/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s03.mp4"/></asset>
+  <asset id="a4" name="04 Reason 2 - skilled manpower" start="0s" duration="98/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s04.mp4"/></asset>
+  <asset id="a5" name="05 Reason 3 - implementation" start="0s" duration="78/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s05.mp4"/></asset>
+  <asset id="a6" name="06 Hivon WhatsApp ERP" start="0s" duration="82/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s06.mp4"/></asset>
+  <asset id="a7" name="07 Business seekhte hain" start="0s" duration="85/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s07.mp4"/></asset>
+  <asset id="a8" name="08 SOPs" start="0s" duration="127/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s08.mp4"/></asset>
+  <asset id="a9" name="09 Face 2 - staff objection" start="0s" duration="74/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s09.mp4"/></asset>
+  <asset id="a10" name="10 Sab WhatsApp par" start="0s" duration="63/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s10.mp4"/></asset>
+  <asset id="a11" name="11 Attendance" start="0s" duration="67/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s11.mp4"/></asset>
+  <asset id="a12" name="12 Inward" start="0s" duration="70/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s12.mp4"/></asset>
+  <asset id="a13" name="13 Production entry" start="0s" duration="106/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s13.mp4"/></asset>
+  <asset id="a14" name="14 Dashboard" start="0s" duration="200/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s14.mp4"/></asset>
+  <asset id="a15" name="15 Price" start="0s" duration="63/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s15.mp4"/></asset>
+  <asset id="a16" name="16 Face 3 - CTA" start="0s" duration="127/25s" hasVideo="1" format="r1" videoSources="1"><media-rep kind="original-media" src="./media/s16.mp4"/></asset>
+  <asset id="au1" name="Voiceover" start="0s" duration="1494/25s" hasAudio="1" audioSources="1" audioChannels="2" audioRate="48000"><media-rep kind="original-media" src="./media/vo.wav"/></asset>
+  <asset id="au2" name="SFX" start="0s" duration="1494/25s" hasAudio="1" audioSources="1" audioChannels="2" audioRate="48000"><media-rep kind="original-media" src="./media/sfx.wav"/></asset>
+  <asset id="au3" name="BGM" start="0s" duration="1494/25s" hasAudio="1" audioSources="1" audioChannels="2" audioRate="48000"><media-rep kind="original-media" src="./media/bgm.wav"/></asset>
+ </resources>
+ <library>
+  <event name="WhatsApp ERP vs Other ERP">
+   <project name="WhatsApp ERP vs Other ERP - Reel">
+    <sequence format="r1" duration="1494/25s" tcStart="0s" tcFormat="NDF" audioLayout="stereo" audioRate="48k">
+     <spine>
+      <asset-clip ref="a1" name="01 VS opening" offset="0/25s" start="0s" duration="56/25s" format="r1" tcFormat="NDF">
+       <asset-clip ref="au1" name="Voiceover" lane="-1" offset="0s" start="0s" duration="1494/25s" audioRole="dialogue"/>
+       <asset-clip ref="au2" name="SFX" lane="-2" offset="0s" start="0s" duration="1494/25s" audioRole="effects"/>
+       <asset-clip ref="au3" name="BGM" lane="-3" offset="0s" start="0s" duration="1494/25s" audioRole="music"/>
+      </asset-clip>
+      <asset-clip ref="a2" name="02 Face 1 - teen reason" offset="56/25s" start="0s" duration="93/25s" format="r1" tcFormat="NDF">
+      </asset-clip>
+      <asset-clip ref="a3" name="03 Reason 1 - koi system nahi" offset="149/25s" start="0s" duration="105/25s" format="r1" tcFormat="NDF">
+      </asset-clip>
+      <asset-clip ref="a4" name="04 Reason 2 - skilled manpower" offset="254/25s" start="0s" duration="98/25s" format="r1" tcFormat="NDF">
+      </asset-clip>
+      <asset-clip ref="a5" name="05 Reason 3 - implementation" offset="352/25s" start="0s" duration="78/25s" format="r1" tcFormat="NDF">
+      </asset-clip>
+      <asset-clip ref="a6" name="06 Hivon WhatsApp ERP" offset="430/25s" start="0s" duration="82/25s" format="r1" tcFormat="NDF">
+      </asset-clip>
+      <asset-clip ref="a7" name="07 Business seekhte hain" offset="512/25s" start="0s" duration="85/25s" format="r1" tcFormat="NDF">
+      </asset-clip>
+      <asset-clip ref="a8" name="08 SOPs" offset="597/25s" start="0s" duration="127/25s" format="r1" tcFormat="NDF">
+      </asset-clip>
+      <asset-clip ref="a9" name="09 Face 2 - staff objection" offset="724/25s" start="0s" duration="74/25s" format="r1" tcFormat="NDF">
+      </asset-clip>
+      <asset-clip ref="a10" name="10 Sab WhatsApp par" offset="798/25s" start="0s" duration="63/25s" format="r1" tcFormat="NDF">
+      </asset-clip>
+      <asset-clip ref="a11" name="11 Attendance" offset="861/25s" start="0s" duration="67/25s" format="r1" tcFormat="NDF">
+      </asset-clip>
+      <asset-clip ref="a12" name="12 Inward" offset="928/25s" start="0s" duration="70/25s" format="r1" tcFormat="NDF">
+      </asset-clip>
+      <asset-clip ref="a13" name="13 Production entry" offset="998/25s" start="0s" duration="106/25s" format="r1" tcFormat="NDF">
+      </asset-clip>
+      <asset-clip ref="a14" name="14 Dashboard" offset="1104/25s" start="0s" duration="200/25s" format="r1" tcFormat="NDF">
+      </asset-clip>
+      <asset-clip ref="a15" name="15 Price" offset="1304/25s" start="0s" duration="63/25s" format="r1" tcFormat="NDF">
+      </asset-clip>
+      <asset-clip ref="a16" name="16 Face 3 - CTA" offset="1367/25s" start="0s" duration="127/25s" format="r1" tcFormat="NDF">
+      </asset-clip>
+     </spine>
+    </sequence>
+   </project>
+  </event>
+ </library>
+</fcpxml>
